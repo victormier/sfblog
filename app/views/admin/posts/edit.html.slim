@@ -1,0 +1,7 @@
+= link_to admin_posts_path, class: 'btn' do
+  i class="icon-arrow-left"
+  |  Back
+
+= render 'header', title: 'Editing post', subtitle: @post.title
+
+= render 'form'

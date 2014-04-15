@@ -1,0 +1,32 @@
+- content_for :actions do
+  = link_to 'New Post', new_admin_post_path, class: "btn btn-success pull-right"
+
+= render 'header', title: 'News'
+
+.posts-list
+  - if @posts.any?
+
+    table.table.table-striped
+      thead
+        tr
+          th
+          th Title
+          th Content
+          th Date
+          th
+
+      thbody
+        - @posts.each do |post|
+          tr.item
+            td
+              - with_publication(post) do |copy, klass|
+                = link_to copy, toggle_published_admin_post_path(post), :method => :post, class: "btn btn-mini #{klass}"
+            td= post.title
+            td= post.cover_text
+            td= post.date.strftime("%d/%m/%Y %H:%M")
+            td
+              = link_to 'Delete', admin_post_path(post), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger btn-small pull-right"
+
+              = link_to t('edit', scope: 'actions'), edit_admin_post_path(post), class: "btn btn-warning btn-small pull-right"
+  - else
+    #none.well There are no posts
