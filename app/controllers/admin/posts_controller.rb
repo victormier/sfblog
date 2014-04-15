@@ -49,6 +49,6 @@ class Admin::PostsController < Admin::ApplicationController
   private
 
   def find_post
-    @post = Post.find(params[:id])
+    @post = Post.find_for_show(params[:id])
   end
 end
