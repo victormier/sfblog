@@ -1,0 +1,17 @@
+= link_to admin_posts_path, class: 'btn' do
+  i class="icon-arrow-left"
+  |  Back
+
+.posts-edit-menu.tabs-edit-menu
+  h1.pull-left
+    ' posts
+    small
+      ' Editing
+      = @post.title
+  ul.nav.nav-pills.pull-left
+    li class=(controller_name == 'posts' ? 'active' : '' )
+      = link_to "Info", edit_admin_post_path(@post)
+    li class=(controller_name == 'post_pictures' ? 'active' : '' )
+      = link_to "Pictures", admin_post_post_pictures_path(@post)
+  .info.pull-right
+    = yield :actions

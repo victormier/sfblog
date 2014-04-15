@@ -1,0 +1,9 @@
+= render 'admin/posts/edit_header'
+
+#post-pictures-form
+  = simple_form_for @post_picture, url: admin_post_post_pictures_path(@post), html: { :class => "form-horizontal" }, defaults: { wrapper: :with_controls, label_html: { class: 'form--horizontal__control-label' } } do |f|
+
+    = f.input :picture, :label => "Picture"
+
+    .controls
+      = f.submit 'Create', :class => "btn btn-primary"

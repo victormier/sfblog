@@ -1,0 +1,22 @@
+- content_for :actions do
+  = link_to 'New Picture', new_admin_post_post_picture_path(@post), class: "btn btn-success pull-right"
+
+= render 'admin/posts/edit_header'
+
+post-pictures-list
+  - if @post.post_pictures.any?
+
+    table.table.table-striped.sortable(update_url=sort_admin_post_pictures_path)
+      thead
+        tr
+          th Picture
+          th
+
+      thbody
+        - @post.post_pictures.each do |picture|
+          tr.item(item_id=picture.id)
+            td= image_tag picture.picture.mini.url
+            td
+              = link_to 'Delete', [:admin, picture], :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger btn-mini pull-right"
+  - else
+    #none.well There are no pictures
