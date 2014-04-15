@@ -24,12 +24,19 @@ class ImageUploader < BaseUploader
 
   def set_square(side)
     manipulate! do |img|
-      img = img['width'] > img['height'] ? set_width(200) : set_height(200)
+      img = img['width'] > img['height'] ? set_width(side) : set_height(side)
       img.combine_options do |mogrify|
         mogrify.gravity 'center'
-        mogrify.background 'transparent'
+        mogrify.background '#FFFFFF'
         mogrify.extent "#{side}x#{side}"
       end
+      img
+    end
+  end
+
+  def set_largest(width, height)
+    manipulate! do |img|
+      img = img['width'] > img['height'] ? set_width(width) : set_height(height)
       img
     end
   end
