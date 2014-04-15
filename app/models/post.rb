@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
   include SlugBuilder
   attr_accessible :title, :content, :cover_text, :published, :date
 
+  has_many :post_pictures
+
   build_slug column_name: :title
 
   validates_presence_of :title

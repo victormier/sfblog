@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140414031224) do
+ActiveRecord::Schema.define(:version => 20140415065015) do
+
+  create_table "post_pictures", :force => true do |t|
+    t.string   "picture"
+    t.integer  "post_id"
+    t.integer  "sort_order"
+    t.boolean  "featured",   :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
