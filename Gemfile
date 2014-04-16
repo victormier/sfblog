@@ -29,6 +29,7 @@ gem 'fog'
 
 # Utils
 gem 'ranked-model'
+gem 'active_model_serializers'
 
 group :assets do
   # CSS and JS
