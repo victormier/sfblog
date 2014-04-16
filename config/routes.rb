@@ -10,7 +10,7 @@ Sfblog::Application.routes.draw do
     end
     resources :users, only: [:index, :new, :create, :destroy]
 
-    root to: 'users#index'
+    root to: 'posts#index'
   end
 
   resources :sessions, only: [:new, :create, :destroy]
