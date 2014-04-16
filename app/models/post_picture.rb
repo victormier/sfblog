@@ -7,12 +7,13 @@ class PostPicture < ActiveRecord::Base
 
   ranks :sort_order, :with_same => :post_id
 
-  attr_accessible :picture
+  attr_accessible :picture, :featured
 
   before_validation :set_order, on: :create
 
   scope :ordered, rank(:sort_order)
   scope :featured, where(featured: true)
+  scope :no_post, where("POST_ID IS NULL")
 
   private
 

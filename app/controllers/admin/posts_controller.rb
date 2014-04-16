@@ -16,6 +16,9 @@ class Admin::PostsController < Admin::ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
+      # Add all post pictures without post
+      PostPicture.no_post.update_all(post_id: @post.id)
+
       flash[:notice] = "Post succesfully created"
       redirect_to admin_posts_path
     else

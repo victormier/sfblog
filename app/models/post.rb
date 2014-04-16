@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include SlugBuilder
   attr_accessible :title, :content, :cover_text, :published, :date
 
-  has_many :post_pictures
+  has_many :post_pictures, dependent: :destroy
 
   build_slug column_name: :title
 

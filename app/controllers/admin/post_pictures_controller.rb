@@ -10,10 +10,13 @@ class Admin::PostPicturesController < Admin::ApplicationController
 
   def create
     if(params[:post_picture])
-      @post_picture = @post.post_pictures.new(params[:post_picture])
+      @post_picture = PostPicture.new(params[:post_picture])
+      @post_picture.featured = true
     else
-      @post_picture = @post.post_pictures.new(picture: params[:file])
+      @post_picture = PostPicture.new(picture: params[:file])
     end
+
+    @post_picture.post = @post unless @post.blank?
 
     if @post_picture.save
       if(params[:post_picture])
@@ -30,9 +33,15 @@ class Admin::PostPicturesController < Admin::ApplicationController
   end
 
   def index
+    @post_pictures = if @post
+      @post.post_pictures
+    else
+      PostPicture.no_post
+    end
+
     respond_to do |format|
       format.html
-      format.js { render json: @post.post_pictures, each_serializer: PostPictureSerializer, root: false }
+      format.js { render json: @post_pictures, each_serializer: PostPictureSerializer, root: false }
     end
   end
 
