@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @post], html: { class: "form-horizontal" }, defaults: { wrapper: :with_controls, label_html: { class: 'form--horizontal__control-label' } } do |f|
+= simple_form_for [:admin, @post], html: { class: "form-horizontal", 'data-slug' => @post.slug, id: 'post_form' }, defaults: { wrapper: :with_controls, label_html: { class: 'form--horizontal__control-label' } } do |f|
 
   = f.input :title, label: "Title", input_html: { class: 'input-xxlarge' }
   = f.input :cover_text, label: "Short Description", as: :text, input_html: { class: 'redactor' }

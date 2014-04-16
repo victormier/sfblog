@@ -9,16 +9,30 @@ class Admin::PostPicturesController < Admin::ApplicationController
   end
 
   def create
-    @post_picture = PostPicture.new(params[:post_picture])
-    @post_picture.post = @post
+    if(params[:post_picture])
+      @post_picture = @post.post_pictures.new(params[:post_picture])
+    else
+      @post_picture = @post.post_pictures.new(picture: params[:file])
+    end
 
     if @post_picture.save
-      respond_to do |format|
-        format.html{redirect_to admin_post_post_pictures_path(@post)}
-        format.js{render json: @post_picture}
+      if(params[:post_picture])
+        respond_to do |format|
+          format.html{redirect_to admin_post_post_pictures_path(@post)}
+          format.js{render json: @post_picture}
+        end
+      else
+        render :text => { :filelink => @post_picture.picture.three_cols.url }.to_json
       end
     else
       fail_response
+    end
+  end
+
+  def index
+    respond_to do |format|
+      format.html
+      format.js { render json: @post.post_pictures, each_serializer: PostPictureSerializer, root: false }
     end
   end
 

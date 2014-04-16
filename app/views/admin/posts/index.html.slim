@@ -1,7 +1,7 @@
 - content_for :actions do
   = link_to 'New Post', new_admin_post_path, class: "btn btn-success pull-right"
 
-= render 'header', title: 'News'
+= render 'header', title: 'Posts'
 
 .posts-list
   - if @posts.any?
