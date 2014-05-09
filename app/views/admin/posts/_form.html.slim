@@ -1,11 +1,11 @@
 = simple_form_for [:admin, @post], html: { class: "form-horizontal", 'data-slug' => @post.slug, id: 'post_form' }, defaults: { wrapper: :with_controls, label_html: { class: 'form--horizontal__control-label' } } do |f|
 
-  = f.input :title, label: "Title", input_html: { class: 'input-xxlarge' }
-  = f.input :cover_text, label: "Short Description", as: :text, input_html: { class: 'redactor' }
+  = f.input :secondary, label: 'Secundari'
+  = f.input :title, label: "Títol", input_html: { class: 'input-xxlarge' }
+  = f.input :cover_text, label: "Descripció curta", as: :text, input_html: { class: 'redactor' }
   = f.input "content", label: "Content", as: :text, input_html: { class: 'redactor_pictures' }
 
-
-  = f.input :date, :label => 'Date', :as => :datetime_picker
+  = f.input :date, :label => 'Data', :as => :datetime_picker
 
   .controls
-    = f.button :submit, "Save", class: 'btn-success'
+    = f.button :submit, "Guardar", class: 'btn-success'

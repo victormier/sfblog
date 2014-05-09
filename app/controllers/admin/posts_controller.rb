@@ -19,7 +19,7 @@ class Admin::PostsController < Admin::ApplicationController
       # Add all post pictures without post
       PostPicture.no_post.update_all(post_id: @post.id)
 
-      flash[:notice] = "Post succesfully created"
+      flash[:notice] = "Hola Evuxi! Has creat un post correctament. T'estimo moltíssim!"
       redirect_to admin_posts_path
     else
       flash[:alert] = "Correct the errors guapita ;)"
@@ -29,17 +29,17 @@ class Admin::PostsController < Admin::ApplicationController
 
   def update
     if @post.update_attributes(params[:post])
-      flash[:notice] = "Post has been updated succesfully"
+      flash[:notice] = "Post actualitzat correctament"
       redirect_to admin_posts_path
     else
-      flash[:alert] = "Correct the errors"
+      flash[:alert] = "Correct the errors guapita ;)"
       render :action => :edit
     end
   end
 
   def destroy
     @post.destroy
-    flash[:notice] = "Post succesfully removed"
+    flash[:notice] = "Post desgraciadament eliminat, pobrissó"
     redirect_to :back
   end
 

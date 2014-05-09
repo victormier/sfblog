@@ -5,7 +5,6 @@
 
 .posts-list
   - if @posts.any?
-
     table.table.table-striped
       thead
         tr
@@ -13,6 +12,7 @@
           th Title
           th Content
           th Date
+          th
           th
 
       thbody
@@ -24,6 +24,7 @@
             td= post.title
             td= post.cover_text
             td= post.date.strftime("%d/%m/%Y %H:%M")
+            td= 'Secundari' if post.secondary?
             td
               = link_to 'Delete', admin_post_path(post), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger btn-small pull-right"
 
