@@ -13,6 +13,8 @@ Sfblog::Application.routes.draw do
     root to: 'posts#index'
   end
 
+  resources :posts, only: [:show]
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
 

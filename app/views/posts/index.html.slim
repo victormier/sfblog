@@ -1,1 +1,17 @@
 = render 'shared/home_hero'
+
+.container
+  .row
+    .span4
+      .posts-list
+        - @posts.each do |post|
+          .posts-list-item
+            h2.posts-list-item-title= post.title.upcase
+            .posts-list-item-date= post.date.strftime('%-d %B, %Y')
+
+            - post.post_pictures.featured.limit(2).each do |post_picture|
+              .posts-list-item-picture= image_tag post_picture.picture.four_cols
+
+            .posts-list-item-description
+              =' post.cover_text.html_safe
+              = link_to 'Llegir més →', post_path(post)
