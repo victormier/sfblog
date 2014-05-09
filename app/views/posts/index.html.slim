@@ -15,3 +15,12 @@
             .posts-list-item-description
               =' post.cover_text.html_safe
               = link_to 'Llegir més →', post_path(post)
+
+    .span2
+      .posts-secondary-list
+        - @secondary_posts.each do |post|
+          .posts-secondary-list-item
+            h3.posts-secondary-list-item-title= post.title.upcase
+            .posts-secondary-list-item-date= post.date.strftime('%-d %B, %Y')
+
+            .posts-secondary-list-item-picture= image_tag post.post_pictures.featured.first.picture.two_cols

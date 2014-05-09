@@ -2,7 +2,8 @@
 
 class PostsController < ApplicationController
   def index
-    @posts = Post.published.newest_first
+    @posts = Post.published.primary.before_now.newest_first
+    @secondary_posts = Post.published.secondary.before_now.newest_first
   end
 
   def show
