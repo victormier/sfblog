@@ -1,15 +1,19 @@
 # encoding: utf-8
 
 class PostPictureUploader < ImageUploader
-  version :eight_cols do
-    process :set_width => 610
+  version :six_cols do
+    process :set_width => 1100
   end
 
-  version :three_cols, :from_version => :eight_cols do
-    process :set_width => 210
+  version :four_cols, from_version: :six_cols do
+    process :set_width => 720
   end
 
-  version :mini, :from_version => :three_cols do
+  version :two_cols, from_version: :four_cols do
+    process :set_width => 340
+  end
+
+  version :mini, :from_version => :two_cols do
     process :set_width => 80
   end
 end
