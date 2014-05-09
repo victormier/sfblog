@@ -1,0 +1,17 @@
+.post-hero(style="background-image:url(#{@post.cover_picture});")
+  .container
+    .row
+      .span1
+      .span4
+        .post-hero-title-container
+          h1.post-hero-title= @post.title.html_safe
+      .span1
+
+.container
+  .post
+    .post-date
+      ' —
+      =' @post.date.strftime('%-d %B, %Y')
+      | —
+    .post-content
+      = @post.content.html_safe
