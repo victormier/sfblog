@@ -6,7 +6,7 @@
       .posts-list
         - @posts.each do |post|
           .posts-list-item
-            h2.posts-list-item-title= post.title.upcase
+            h2.posts-list-item-title= link_to strip_tags(post.title.upcase), post_path(post)
             .posts-list-item-date= post.date.strftime('%-d %B, %Y')
 
             - post.post_pictures.featured.limit(2).each do |post_picture|
@@ -20,7 +20,7 @@
       .posts-secondary-list
         - @secondary_posts.each do |post|
           .posts-secondary-list-item
-            h3.posts-secondary-list-item-title= post.title.upcase
+            h3.posts-secondary-list-item-title= strip_tags(post.title.upcase)
             .posts-secondary-list-item-date= post.date.strftime('%-d %B, %Y')
 
             .posts-secondary-list-item-picture= image_tag post.post_pictures.featured.first.picture.two_cols
