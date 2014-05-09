@@ -20,5 +20,5 @@ Sfblog::Application.routes.draw do
   get 'logout' => 'sessions#destroy', as: 'logout'
   get 'login' => 'sessions#new', as: 'login'
 
-  root to: 'static#index'
+  root to: 'posts#index'
 end
