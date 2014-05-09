@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140509044901) do
+ActiveRecord::Schema.define(:version => 20140509051719) do
 
   create_table "post_pictures", :force => true do |t|
     t.string   "picture"
@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(:version => 20140509044901) do
     t.string   "title"
     t.text     "cover_text"
     t.text     "content"
-    t.boolean  "published",  :default => false
+    t.boolean  "published",     :default => false
     t.datetime "date"
     t.datetime "end_date"
     t.string   "slug"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "secondary",  :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "secondary",     :default => false
+    t.string   "cover_picture"
   end
 
   create_table "users", :force => true do |t|

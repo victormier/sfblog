@@ -9,6 +9,7 @@
       thead
         tr
           th
+          th
           th Title
           th Content
           th Date
@@ -21,6 +22,7 @@
             td
               - with_publication(post) do |copy, klass|
                 = link_to copy, toggle_published_admin_post_path(post), :method => :post, class: "btn btn-mini #{klass}"
+            td(style='width:120px;')= image_tag post.cover_picture.mini unless post.cover_picture.blank?
             td= post.title
             td= post.cover_text
             td= post.date.strftime("%d/%m/%Y %H:%M")

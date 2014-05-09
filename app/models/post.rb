@@ -1,8 +1,10 @@
 class Post < ActiveRecord::Base
   include SlugBuilder
-  attr_accessible :title, :content, :cover_text, :published, :date, :secondary
+  attr_accessible :title, :content, :cover_text, :published, :date, :secondary, :cover_picture
 
   has_many :post_pictures, dependent: :destroy
+
+  mount_uploader :cover_picture, CoverPictureUploader
 
   build_slug column_name: :title
 
